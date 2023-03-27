@@ -1,0 +1,55 @@
+<h1>1 EUR = {{ eurUsdRate | number : "1.3" }} USD</h1>
+
+<input [(ngModel)]="overRide" placeholder="overRide fx" />
+<button [disabled]="fxOverRide" (click)="change()">activate</button>
+<button [disabled]="!fxOverRide" (click)="change()">deactivate</button>
+<div *ngIf="curr == 'USD'">
+  <form #usd_to_eur="ngForm" (ngSubmit)="Usd_to_eur(usd_to_eur.value)">
+    <input placeholder="USD" ngModel name="usd" />
+    <select [name]="curr" id="currency" [(ngModel)]="curr" (change)="reset()">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+    <br />
+    <button>Convert</button>
+    <h2 *ngIf="show">
+      {{ usd | number : "1.0-3" }} USD = {{ eru | number : "1.0-3" }} EUR
+    </h2>
+  </form>
+</div>
+
+<div *ngIf="curr == 'EUR'">
+  <form #eur_to_usd="ngForm" (ngSubmit)="Eur_to_usd(eur_to_usd.value)">
+    <input placeholder="EUR" ngModel name="eru" />
+    <select name="curr" id="currency" [(ngModel)]="curr" (change)="reset()">
+      <option value="EUR">EUR</option>
+      <option value="USD">USD</option>
+    </select>
+    <br />
+    <button>Convert</button>
+  </form>
+  <h2 *ngIf="show">
+    {{ eru | number : "1.0-3" }} EUR = {{ usd | number : "1.0-3" }} USD
+  </h2>
+</div>
+
+<table>
+  <tr>
+    <th>USD</th>
+    <th>EUR</th>
+    <th>Over Rided</th>
+    <th>overRide</th>
+  </tr>
+  <tr *ngFor="let h of allHistory">
+    <td>
+      {{ h?.USD | number : "1.0-3" }}
+    </td>
+    <td>
+      {{ h?.EUR | number : "1.0-3" }}
+    </td>
+
+    <td>{{ h?.fxRate | number : "1.0-3" }}</td>
+    <td>{{ h?.overRidden}}</td>
+
+  </tr>
+</table>

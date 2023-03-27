@@ -1,0 +1,12 @@
+*{
+    align-items: center;
+    text-align: center;
+    background-color: rgb(83, 190, 190);
+    height: 800px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
