@@ -18,7 +18,7 @@ export class ConverterComponent {
   index: number = 0;
   overRide: number = 0;
   fxOverRide: boolean = false;
-  diffrence: number = 1;
+  diffrence: number = 0.2;
   ngOnInit() {
     setInterval(() => {
       const randomNum = Math.random() * 0.1 - 0.05;
@@ -28,10 +28,11 @@ export class ConverterComponent {
   Usd_to_eur(data: any) {
     console.log(data);
     this.usd = data.usd;
-    if (!this.fxOverRide) {
-      this.eru = this.usd / this.eurUsdRate;
-    } else {
+    this.diffrence=Math.abs(this.eurUsdRate-this.overRide)/this.eurUsdRate;
+    if (this.fxOverRide && this.diffrence<=0.02) {
       this.eru = this.usd / this.overRide;
+    } else {
+      this.eru = this.usd / this.eurUsdRate;
     }
     this.show = true;
     if (this.index > 5) {
@@ -48,11 +49,11 @@ export class ConverterComponent {
   }
   Eur_to_usd(data: any) {
     this.eru = data.eru;
-    // this.diffrence = Math.abs(this.overRide - this.eurUsdRate);
-    if (!this.fxOverRide) {
-      this.usd = this.eru * this.eurUsdRate;
-    } else {
+    this.diffrence=Math.abs(this.eurUsdRate-this.overRide)/this.eurUsdRate;
+    if (this.fxOverRide && this.diffrence<=0.02) {
       this.usd = this.eru * this.overRide;
+    } else {
+      this.usd = this.eru * this.eurUsdRate;
     }
     this.show = true;
     if (this.index > 5) {
