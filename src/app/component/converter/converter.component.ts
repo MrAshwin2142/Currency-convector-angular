@@ -30,8 +30,10 @@ export class ConverterComponent {
     this.usd = data.usd;
     this.diffrence=Math.abs(this.eurUsdRate-this.overRide)/this.eurUsdRate;
     if (this.fxOverRide && this.diffrence<=0.02) {
+      this.fxOverRide=true;
       this.eru = this.usd / this.overRide;
     } else {
+      this.fxOverRide=false;
       this.eru = this.usd / this.eurUsdRate;
     }
     this.show = true;
@@ -51,8 +53,10 @@ export class ConverterComponent {
     this.eru = data.eru;
     this.diffrence=Math.abs(this.eurUsdRate-this.overRide)/this.eurUsdRate;
     if (this.fxOverRide && this.diffrence<=0.02) {
+      this.fxOverRide=true;
       this.usd = this.eru * this.overRide;
     } else {
+      this.fxOverRide=false;
       this.usd = this.eru * this.eurUsdRate;
     }
     this.show = true;

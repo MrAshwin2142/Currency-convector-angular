@@ -1,7 +1,9 @@
-*{
-    text-align: center;
-    justify-content: center;
-}
+
 .container{
     height: 120px;
+}
+input{
+    margin: 10px;
+    padding: 2px;
+    text-align: center;
 }
