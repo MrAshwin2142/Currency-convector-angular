@@ -36,9 +36,10 @@
 
   <table>
     <tr>
-      <th>USD</th>
-      <th>EUR</th>
-      <th>Over Rided</th>
+      <th>USD |</th>
+      <th>EUR |</th>
+      <th>fx Rate |</th>
+      <th>Over Rided |</th>
       <th>overRide</th>
     </tr>
     <tr *ngFor="let h of allHistory">
@@ -47,6 +48,9 @@
       </td>
       <td>
         {{ h?.EUR | number : "1.0-3" }}
+      </td>
+      <td>
+        {{ h?.eruTOusd | number : "1.0-3" }}
       </td>
 
       <td>{{ h?.fxRate | number : "1.0-3" }}</td>

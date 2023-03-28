@@ -1,9 +1,18 @@
 
 .container{
-    height: 120px;
+    background-color: aliceblue;
+    margin: 30px;
+    padding: 20px;
+    height: 400px;
 }
 input{
     margin: 10px;
     padding: 2px;
     text-align: center;
+}
+table{
+    /* height: 200px; */
+    margin: 10px;
+    align-self: top;
+    /* border-left: 2px solid black ; */
 }
